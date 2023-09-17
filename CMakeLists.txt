@@ -22,12 +22,12 @@ endif()
 # Don't edit the makefile!
 option(CAPSTONE_BUILD_STATIC_RUNTIME "Embed static runtime" ON)
 option(CAPSTONE_BUILD_STATIC "Build static library" ON)
-option(CAPSTONE_BUILD_SHARED "Build shared library" ON)
+option(CAPSTONE_BUILD_SHARED "Build shared library" OFF)
 option(CAPSTONE_BUILD_DIET "Build diet library" OFF)
-option(CAPSTONE_BUILD_TESTS "Build tests" ON)
-option(CAPSTONE_BUILD_CSTOOL "Build cstool" ON)
+option(CAPSTONE_BUILD_TESTS "Build tests" OFF)
+option(CAPSTONE_BUILD_CSTOOL "Build cstool" OFF)
 option(CAPSTONE_USE_DEFAULT_ALLOC "Use default memory allocation functions" ON)
-option(CAPSTONE_ARCHITECTURE_DEFAULT "Whether architectures are enabled by default" ON)
+option(CAPSTONE_ARCHITECTURE_DEFAULT "Whether architectures are enabled by default" OFF)
 option(CAPSTONE_DEBUG "Whether to enable extra debug assertions" OFF)
 option(CAPSTONE_INSTALL "Generate install target" OFF)
 
@@ -702,6 +702,7 @@ endif ()
 install(EXPORT capstone-targets
         NAMESPACE capstone::
         DESTINATION ${CAPSTONE_CMAKE_CONFIG_INSTALL_DIR})
+export(EXPORT capstone-targets NAMESPACE capstone::)
 endif ()
 
 if (CAPSTONE_BUILD_SHARED AND CAPSTONE_BUILD_CSTOOL)
